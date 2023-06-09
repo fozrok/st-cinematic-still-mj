@@ -432,12 +432,12 @@ def main():
 
     # Title and description
     st.title('Midjourney Prompt Generator')
-    st.markdown('Made by Shane Fozard, June 2023')
+    st.markdown('Step 1: Select Media Type from the side bar (top left corner on mobile)')
 
     # Get user input or random choice in sidebar
     selected_image_type = st.sidebar.selectbox("Select a media type:", image_types)
 
-    with st.expander("Click to Expand"):
+    with st.expander("Step 2: Click to Expand"):
         if selected_image_type == "Animation":
             selected_creator = st.selectbox("Select an Animator:", famous_animators)
         elif selected_image_type == "Architectural design":
