@@ -24,29 +24,22 @@ st.markdown(
         margin-bottom: 1em;
     }
 
-    .stSelectbox,
-    .stTextInput {
-        color: #00FF41;  /* Neon green input color */
-        background-color: #333;  /* Dark gray input background color */
-        border-radius: 8px;
-        padding: 0.25em 0.5em;
-        font-size: 16px;
-        border: none;
+    .st-expander .st-expander-open-btn::before {
+        content: "\f103";
     }
 
-    .stButton button {
-        background-color: #FF3864;  /* Neon pink button background color */
-        color: #000;  /* Black button text color */
-        font-weight: bold;
-        border-radius: 8px;
-        padding: 0.5em 1em;
-        font-size: 16px;
-        border: none;
+    .st-expander .st-expander-close-btn::before {
+        content: "\f102";
     }
 
-    .stButton button:hover {
-        background-color: #FF2C56;  /* Darker neon pink on button hover */
-        color: #000;
+    @media (max-width: 480px) {
+        .st-expander .st-expander-open-btn::before {
+            content: "\f104";
+        }
+
+        .st-expander .st-expander-close-btn::before {
+            content: "\f105";
+        }
     }
 
     </style>
@@ -70,12 +63,13 @@ def main():
     st.markdown('Made by Shane Fozard, June 2023')
 
     # Get user input or random choice
-    selected_filmmaker = st.selectbox("Select a filmmaker:", filmmakers)
-    scene_subject_action = st.text_input("Enter the Scene/Subject/Action: ")
-    set = st.text_input("Enter the Set: ")
-    selected_location_time_of_day = st.selectbox("Select a location and time of day:", location_time_of_day)
-    selected_shot = st.selectbox("Select a shot type:", shot)
-    selected_dash_dash = st.selectbox("Select an aspect ratio:", dash_dash)
+    with st.expander("Click to Expand"):
+        selected_filmmaker = st.selectbox("Select a filmmaker:", filmmakers)
+        scene_subject_action = st.text_input("Enter the Scene/Subject/Action: ")
+        set = st.text_input("Enter the Set: ")
+        selected_location_time_of_day = st.selectbox("Select a location and time of day:", location_time_of_day)
+        selected_shot = st.selectbox("Select a shot type:", shot)
+        selected_dash_dash = st.selectbox("Select an aspect ratio:", dash_dash)
 
     # Generate prompt
     if st.button('Generate Prompt'):
